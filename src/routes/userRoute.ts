@@ -18,7 +18,5 @@ router.post('/login', async (req, res)=>{
     res.status(statusCode).send(data) 
     })
 
-
-
-
 export default router
+ 
