@@ -46,6 +46,6 @@ password: string,
  }
 
  const generateJWT = (data: any)=>{
-    return jwt.sign(data, 'UOPHSBaM0p5McWwihrPe6VPnp3zY1OFH',{})
+    return jwt.sign(data, process.env.JWT_SECRET || '');
  }
  
