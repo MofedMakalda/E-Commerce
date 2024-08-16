@@ -10,14 +10,14 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-
-import {  Button, Grid } from "@mui/material";
+import ShoppingCart from "@mui/icons-material/ShoppingCart";
+import { Badge, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/Auth/AuthContext";
 
 function Navbar() {
-  const { username, isAuthenticated, logout} = useAuth();
-  
+  const { username, isAuthenticated, logout } = useAuth();
+
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -41,8 +41,6 @@ function Navbar() {
     navigate("/");
     handleCloseUserMenu();
   };
-
-
 
   return (
     <AppBar position="static">
@@ -92,7 +90,11 @@ function Navbar() {
               alignItems="center"
               justifyContent="center"
             >
-          
+              <IconButton aria-label="cart">
+                <Badge badgeContent={4} color="secondary">
+                  <ShoppingCart sx={{color:"#ffffff"}}/>
+                </Badge>
+              </IconButton>
               {isAuthenticated ? (
                 <>
                   <Tooltip title="Open settings">
@@ -156,4 +158,3 @@ function Navbar() {
   );
 }
 export default Navbar;
-
