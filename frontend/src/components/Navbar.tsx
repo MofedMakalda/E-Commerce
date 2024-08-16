@@ -11,13 +11,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
+import { useAuth } from "../context/Auth/AuthContext";
 import { Badge, Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/Auth/AuthContext";
+import { useCart } from "../context/Cart/CartContext";
 
 function Navbar() {
   const { username, isAuthenticated, logout } = useAuth();
-
+  const { cartItems } = useCart();
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
@@ -40,6 +41,10 @@ function Navbar() {
     logout();
     navigate("/");
     handleCloseUserMenu();
+  };
+
+  const handleCart = () => {
+    navigate("/cart");
   };
 
   return (
@@ -90,9 +95,9 @@ function Navbar() {
               alignItems="center"
               justifyContent="center"
             >
-              <IconButton aria-label="cart">
-                <Badge badgeContent={4} color="secondary">
-                  <ShoppingCart sx={{color:"#ffffff"}}/>
+              <IconButton aria-label="cart" onClick={handleCart}>
+                <Badge badgeContent={cartItems.length} color="secondary">
+                  <ShoppingCart sx={{ color: "#ffffff" }} />
                 </Badge>
               </IconButton>
               {isAuthenticated ? (
