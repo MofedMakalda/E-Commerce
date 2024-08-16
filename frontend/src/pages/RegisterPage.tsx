@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { BASE_URL } from "../constants/baseURL";
 import { red } from "@mui/material/colors";
 import { useAuth } from "../context/Auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const RegisterPage = () => {
@@ -15,6 +16,7 @@ const RegisterPage = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const {login}= useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = async () => {
     const firstName = firstNameRef.current?.value;
@@ -50,7 +52,7 @@ const RegisterPage = () => {
     }
     
    login(email, token)
-
+   navigate("/")
 
     
   };
