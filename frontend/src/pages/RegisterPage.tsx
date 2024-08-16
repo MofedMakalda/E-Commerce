@@ -32,7 +32,7 @@ const RegisterPage = () => {
       }),
     });
     if (!response.ok) {
-      setError("user already exists");
+      setError("User already exists");
       return;
     }
     const data = await response.json();
@@ -49,7 +49,7 @@ const RegisterPage = () => {
           marginTop: 4,
         }}
       >
-        <Typography variant="h6"> Register New Account</Typography>
+        <Typography variant="h6"> Register New Account </Typography>
         <Box
           sx={{
             display: "flex",
@@ -77,7 +77,7 @@ const RegisterPage = () => {
           <Button onClick={onSubmit} variant="contained">
             Register
           </Button>
-          {error && <Typography sx={{ color: "red", display:"flex, justify" }}>{error}</Typography>}
+          {error && <Typography sx={{ color: "red", display:"flex", justifyContent:"center" }}>{error}</Typography>}
         </Box>
       </Box>
     </Container>
